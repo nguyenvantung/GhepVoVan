@@ -11,6 +11,7 @@ import android.widget.Toast
 import com.to.game.puzzle.kids.R
 import com.to.game.puzzle.kids.model.PuzzlePiece
 import com.to.game.puzzle.kids.ui.activity.BaseFragment
+import com.to.game.puzzle.kids.util.FragmentUtil
 import com.to.game.puzzle.kids.view.TouchListener
 import kotlinx.android.synthetic.main.painting_fragment.*
 import java.io.IOException
@@ -26,6 +27,7 @@ class PaintingFragment : BaseFragment(){
     private var listImageMoveSelect: MutableList<String> = arrayListOf()
     private var listImagePieSelect: MutableList<String> = arrayListOf()
     private var numberItem: Int = 0
+    private var number: Int = 0
 
     companion object{
         fun newInstance(): PaintingFragment{
@@ -61,15 +63,31 @@ class PaintingFragment : BaseFragment(){
         return list!!.toMutableList()
     }
 
-    private fun handleGetImageAssets(){
-        for (i in 0..3){
-            numberItem = Random().nextInt(listImagePie.size) + 1
-            val imageUrl = listImageMove[numberItem]
-            val imageUrlPie = listImagePie[numberItem]
+    private fun handleGetImage(){
+        if (number == 4){
+            return
+        }
+        numberItem = Random().nextInt(listImagePie.size - 1) + 0
+        val imageUrl = listImageMove[numberItem]
+        val imageUrlPie = listImagePie[numberItem]
+        if (listImageMoveSelect.size > 0 && listImagePieSelect.size > 0){
+            if (!listImageMoveSelect.contains(imageUrl) && !listImagePieSelect.contains(imageUrlPie)){
+                listImageMoveSelect.add(imageUrl)
+                listImagePieSelect.add(imageUrlPie)
+                number++
+            }
+            handleGetImage()
+        }else{
             listImageMoveSelect.add(imageUrl)
             listImagePieSelect.add(imageUrlPie)
+            number++
+            handleGetImage()
         }
 
+    }
+
+    private fun handleGetImageAssets(){
+        handleGetImage()
         try {
             val urlMove1 = activity!!.assets.open("animal/" + listImageMoveSelect[0])
             val urlPie1 = activity!!.assets.open("animal1/"+listImagePieSelect[0])
@@ -181,9 +199,16 @@ class PaintingFragment : BaseFragment(){
             }
             R.id.imageMove4 -> {
                 Toast.makeText(activity, "done", Toast.LENGTH_LONG).show()
+                FragmentUtil.replaceFragment(activity!!, newInstance())
+               /* number = 0
                 listImageMoveSelect.clear()
                 listImagePieSelect.clear()
                 handleGetImageAssets()
+                handlePositionViewMove()
+                handleSetupImageMove()
+                imageMove2.visibility = View.GONE
+                imageMove3.visibility = View.GONE*/
+                //imageMove4.visibility = View.GONE
             }
         }
 
