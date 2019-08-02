@@ -5,7 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
-import com.to.game.puzzle.kids.model.PuzzlePiece;
+import com.to.game.puzzle.kids.model.AnimalPiece;
 import com.to.game.puzzle.kids.ui.fragment.PaintingFragment;
 
 import static java.lang.Math.pow;
@@ -16,7 +16,7 @@ public class TouchListener implements View.OnTouchListener {
     private float xDelta;
     private float yDelta;
     private PaintingFragment fragment;
-    private PuzzlePiece piece;
+    private AnimalPiece piece;
 
     public TouchListener() {
     }
@@ -25,7 +25,7 @@ public class TouchListener implements View.OnTouchListener {
         this.fragment = fragment;
     }
 
-    public void setPiece(PuzzlePiece piece) {
+    public void setPiece(AnimalPiece piece) {
         this.piece = piece;
     }
 
@@ -34,7 +34,7 @@ public class TouchListener implements View.OnTouchListener {
         float x = motionEvent.getRawX();
         float y = motionEvent.getRawY();
         final double tolerance = sqrt(pow(view.getWidth(), 2) + pow(view.getHeight(), 2)) / 10;
-        if (!piece.canMove) {
+        if (!piece.getCanMove()) {
             return true;
         }
 
@@ -52,12 +52,12 @@ public class TouchListener implements View.OnTouchListener {
                 lParams.bottomMargin = -250;
                 lParams.rightMargin = -250;
                 view.setLayoutParams(lParams);
-                int xDiff = abs(piece.xCoord - lParams.leftMargin);
-                int yDiff = abs(piece.yCoord - lParams.topMargin);
+                int xDiff = abs(piece.getXCoord() - lParams.leftMargin);
+                int yDiff = abs(piece.getYCoord() - lParams.topMargin);
                 if (xDiff <= tolerance && yDiff <= tolerance) {
-                    piece.canMove = false;
-                    lParams.leftMargin = piece.xCoord;
-                    lParams.topMargin = piece.yCoord;
+                    piece.setCanMove(false);
+                    lParams.leftMargin = piece.getXCoord();
+                    lParams.topMargin = piece.getYCoord();
                     view.setLayoutParams(lParams);
                     fragment.handleShowView(view.getId());
                     sendViewToBack(piece);

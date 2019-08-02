@@ -1,15 +1,15 @@
 package com.to.game.puzzle.kids.ui.fragment
 
 import android.graphics.BitmapFactory
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
 import android.util.DisplayMetrics
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.RelativeLayout
-import android.widget.Toast
 import com.to.game.puzzle.kids.R
-import com.to.game.puzzle.kids.model.PuzzlePiece
+import com.to.game.puzzle.kids.model.AnimalPiece
 import com.to.game.puzzle.kids.ui.activity.BaseFragment
 import com.to.game.puzzle.kids.util.FragmentUtil
 import com.to.game.puzzle.kids.view.TouchListener
@@ -28,6 +28,8 @@ class PaintingFragment : BaseFragment(){
     private var listImagePieSelect: MutableList<String> = arrayListOf()
     private var numberItem: Int = 0
     private var number: Int = 0
+
+    private var mediaPlayer: MediaPlayer? = null
 
     companion object{
         fun newInstance(): PaintingFragment{
@@ -130,7 +132,7 @@ class PaintingFragment : BaseFragment(){
 
         imagePie1.getLocationOnScreen(location)
         var x1 = location[0]
-        val puzzlePiece1 = PuzzlePiece(activity)
+        val puzzlePiece1 = AnimalPiece(activity!!)
 
         puzzlePiece1.canMove = true
         puzzlePiece1.xCoord = x1
@@ -142,7 +144,7 @@ class PaintingFragment : BaseFragment(){
         touchListener1.setPiece(puzzlePiece1)
         imageMove1.setOnTouchListener(touchListener1)
 
-        val puzzlePiece2 = PuzzlePiece(activity)
+        val puzzlePiece2 = AnimalPiece(activity!!)
         imagePie2.getLocationOnScreen(location)
         var x2 = location[0]
         puzzlePiece2.canMove = true
@@ -155,7 +157,7 @@ class PaintingFragment : BaseFragment(){
         touchListener2.setPiece(puzzlePiece2)
         imageMove2.setOnTouchListener(touchListener2)
 
-        val puzzlePiece3 = PuzzlePiece(activity)
+        val puzzlePiece3 = AnimalPiece(activity!!)
         imagePie3.getLocationOnScreen(location)
         var x3 = location[0]
         puzzlePiece3.canMove = true
@@ -169,7 +171,7 @@ class PaintingFragment : BaseFragment(){
         imageMove3.setOnTouchListener(touchListener3)
 
         var x4 = location[0]
-        val puzzlePiece4 = PuzzlePiece(activity)
+        val puzzlePiece4 = AnimalPiece(activity!!)
         puzzlePiece4.canMove = true
         puzzlePiece4.xCoord = x4
         puzzlePiece4.yCoord = height - (imagePie4.height + 80)
@@ -186,29 +188,33 @@ class PaintingFragment : BaseFragment(){
         val showAnimation = AnimationUtils.loadAnimation(activity, R.anim.show_view)
         when(id){
             R.id.imageMove1 -> {
+                mudicDone()
                 imageMove2.visibility = View.VISIBLE
                 imageMove2.startAnimation(showAnimation)
+                animationPie1.visibility = View.VISIBLE
             }
             R.id.imageMove2 -> {
+                mudicDone()
                 imageMove3.visibility = View.VISIBLE
                 imageMove3.startAnimation(showAnimation)
+                animationPie2.visibility = View.VISIBLE
             }
             R.id.imageMove3 -> {
+                mudicDone()
                 imageMove4.visibility = View.VISIBLE
                 imageMove4.startAnimation(showAnimation)
+                animationPie3.visibility = View.VISIBLE
             }
             R.id.imageMove4 -> {
-                Toast.makeText(activity, "done", Toast.LENGTH_LONG).show()
-                FragmentUtil.replaceFragment(activity!!, newInstance())
-               /* number = 0
+                mudicEnd()
+                animationPie4.visibility = View.VISIBLE
+                animationEnd.visibility = View.VISIBLE
+                Handler().postDelayed({
+                    mediaPlayer!!.stop()
+                    FragmentUtil.replaceFragment(activity!!, newInstance())}, 2000)
+                number = 0
                 listImageMoveSelect.clear()
                 listImagePieSelect.clear()
-                handleGetImageAssets()
-                handlePositionViewMove()
-                handleSetupImageMove()
-                imageMove2.visibility = View.GONE
-                imageMove3.visibility = View.GONE*/
-                //imageMove4.visibility = View.GONE
             }
         }
 
@@ -238,5 +244,14 @@ class PaintingFragment : BaseFragment(){
         layoutParams4.leftMargin = width/2 - 200
         layoutParams4.topMargin = height/2 - 250
         imageMove4.layoutParams = layoutParams4
+    }
+
+    private fun mudicDone() {
+        val mediaPlayer = MediaPlayer.create(context, R.raw.sf_0)
+        mediaPlayer.start()
+    }
+    private fun mudicEnd() {
+        mediaPlayer = MediaPlayer.create(context, R.raw.phaohoa)
+        mediaPlayer!!.start()
     }
 }

@@ -1,59 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/layout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/ic_bg_gh"
-    android:gravity="center">
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_bg_gh"
+                android:gravity="center">
 
 
     <ImageView
-        android:id="@+id/imagePie1"
-        android:layout_width="@dimen/margin_150"
-        android:layout_height="@dimen/margin_150" />
+            android:id="@+id/imagePie1"
+            android:layout_width="@dimen/margin_150"
+            android:layout_height="@dimen/margin_150"/>
+    <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animationPie1"
+            android:layout_width="@dimen/margin_150"
+            android:layout_height="@dimen/margin_150"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="3009-sparkles.json"
+            app:lottie_loop="true"
+            android:visibility="gone"/>
 
     <ImageView
-        android:id="@+id/imagePie2"
-        android:layout_width="@dimen/margin_150"
-        android:layout_height="@dimen/margin_150"
-        android:layout_alignParentBottom="true" />
+            android:id="@+id/imagePie2"
+            android:layout_width="@dimen/margin_150"
+            android:layout_height="@dimen/margin_150"
+            android:layout_alignParentBottom="true"/>
+    <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animationPie2"
+            android:layout_alignParentBottom="true"
+            android:layout_width="@dimen/margin_150"
+            android:layout_height="@dimen/margin_150"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="3009-sparkles.json"
+            app:lottie_loop="true"
+            android:visibility="gone"/>
 
     <ImageView
-        android:id="@+id/imagePie3"
-        android:layout_width="@dimen/margin_150"
-        android:layout_height="@dimen/margin_150"
-        android:layout_alignParentRight="true" />
+            android:id="@+id/imagePie3"
+            android:layout_width="@dimen/margin_150"
+            android:layout_height="@dimen/margin_150"
+            android:layout_alignParentRight="true"/>
+    <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animationPie3"
+            android:layout_alignParentRight="true"
+            android:layout_width="@dimen/margin_150"
+            android:layout_height="@dimen/margin_150"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="3009-sparkles.json"
+            app:lottie_loop="true"
+            android:visibility="gone"/>
 
     <ImageView
-        android:id="@+id/imagePie4"
-        android:layout_width="@dimen/margin_150"
-        android:layout_height="@dimen/margin_150"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true" />
+            android:id="@+id/imagePie4"
+            android:layout_width="@dimen/margin_150"
+            android:layout_height="@dimen/margin_150"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"/>
+    <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animationPie4"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_width="@dimen/margin_150"
+            android:layout_height="@dimen/margin_150"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="3009-sparkles.json"
+            app:lottie_loop="true"
+            android:visibility="gone"/>
 
     <ImageView
-        android:id="@+id/imageMove1"
-        android:layout_width="@dimen/margin_150"
-        android:layout_height="@dimen/margin_150"
-        android:layout_marginLeft="300dp"
-        android:visibility="visible" />
+            android:id="@+id/imageMove1"
+            android:layout_width="@dimen/margin_150"
+            android:layout_height="@dimen/margin_150"
+            android:layout_marginLeft="300dp"
+            android:visibility="visible"/>
 
     <ImageView
-        android:id="@+id/imageMove2"
-        android:layout_width="@dimen/margin_150"
-        android:layout_height="@dimen/margin_150"
-        android:visibility="gone" />
+            android:id="@+id/imageMove2"
+            android:layout_width="@dimen/margin_150"
+            android:layout_height="@dimen/margin_150"
+            android:visibility="gone"/>
 
     <ImageView
-        android:id="@+id/imageMove3"
-        android:layout_width="@dimen/margin_150"
-        android:layout_height="@dimen/margin_150"
-        android:visibility="gone" />
+            android:id="@+id/imageMove3"
+            android:layout_width="@dimen/margin_150"
+            android:layout_height="@dimen/margin_150"
+            android:visibility="gone"/>
 
     <ImageView
-        android:id="@+id/imageMove4"
-        android:layout_width="@dimen/margin_150"
-        android:layout_height="@dimen/margin_150"
-        android:visibility="gone" />
+            android:id="@+id/imageMove4"
+            android:layout_width="@dimen/margin_150"
+            android:layout_height="@dimen/margin_150"
+            android:visibility="gone"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animationEnd"
+            android:layout_alignParentRight="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="1801-fireworks.json"
+            app:lottie_loop="true"
+            android:visibility="gone"/>
 
 </RelativeLayout>
