@@ -11,18 +11,18 @@ import java.io.File
 import java.util.ArrayList
 
 class Puzzle {
-    internal var mActivity: Activity? = null
+    var mActivity: Activity? = null
     var mSourceImage: Bitmap? = null
-    internal var puzzlePieceArrayList: ArrayList<PuzzlePiece> = arrayListOf()
+    var puzzlePieceArrayList: ArrayList<PuzzlePiece> = arrayListOf()
 
 
     fun createPuzzlePieces(
-        aActivity: Activity, width: Int, height: Int,
-        imageView: ImageView, path: String, horizontalResolution: Int, verticalResolution: Int
+            aActivity: Activity, width: Int, height: Int,
+            imageView: ImageView, drawable: Int, path: String, horizontalResolution: Int, verticalResolution: Int
     ): ArrayList<PuzzlePiece> {
         this.mActivity = aActivity
         this.puzzlePieceArrayList = ArrayList()
-        getDisplaySize(width, height, imageView)
+        getDisplaySize(width, height, imageView, drawable)
         deleteDirectories(path)
         val cutMap = CutMap(horizontalResolution, verticalResolution)
         val imageCutter = mSourceImage?.let { ImageCutter(it, cutMap) }
@@ -31,15 +31,13 @@ class Puzzle {
         return puzzlePieceArrayList
     }
 
-    private fun getDisplaySize(widthFinal: Int, heightFinal: Int, imageView: ImageView) {
+    private fun getDisplaySize(widthFinal: Int, heightFinal: Int, imageView: ImageView, drawable: Int) {
         var image: Bitmap? = null
         try {
-            image = BitmapFactory.decodeResource(mActivity!!.resources, R.drawable.jig)
+            image = BitmapFactory.decodeResource(mActivity!!.resources, drawable)
             mSourceImage = Bitmap.createScaledBitmap(image!!, widthFinal, heightFinal, false)
         } catch (ex: OutOfMemoryError) {
             ex.printStackTrace()
-        } finally {
-            image = null
         }
         mActivity!!.runOnUiThread { imageView.setImageBitmap(mSourceImage) }
 

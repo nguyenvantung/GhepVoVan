@@ -2,6 +2,7 @@ package com.to.game.puzzle.kids.ui.activity
 
 import android.os.Bundle
 import com.to.game.puzzle.kids.R
+import com.to.game.puzzle.kids.ui.fragment.HomeFragment
 import com.to.game.puzzle.kids.ui.fragment.PaintingFragment
 import com.to.game.puzzle.kids.util.FragmentUtil
 
@@ -14,6 +15,6 @@ class MainActivity : BaseActivity() {
 
     override fun initView(savedInstanceState: Bundle?) {
         super.initView(savedInstanceState)
-        FragmentUtil.replaceFragment(supportFragmentManager, PaintingFragment.newInstance())
+        FragmentUtil.replaceFragmentAndAddToBackStack(supportFragmentManager, HomeFragment())
     }
 }

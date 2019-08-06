@@ -51,7 +51,7 @@ class PaintingFragment : BaseFragment(){
         Handler().postDelayed({
             handleGetImageAssets()
             handleSetupImageMove()
-        }, 1000)
+        }, 500)
 
     }
 

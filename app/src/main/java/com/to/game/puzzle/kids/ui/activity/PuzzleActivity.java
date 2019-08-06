@@ -77,7 +77,7 @@ public class PuzzleActivity extends AppCompatActivity {
                 if (widthCheck) {
                     widthFinal = scrollView.getWidth();
                     heightFinal = scrollView.getHeight();
-                    puzzlePiecesList = puzzle.createPuzzlePieces(PuzzleActivity.this, widthFinal, heightFinal, imageView, "/puzzles/", 3, 3);
+                    puzzlePiecesList = puzzle.createPuzzlePieces(PuzzleActivity.this, widthFinal, heightFinal, imageView, R.drawable.jig,"/puzzles/", 3, 3);
                     getAdapter();
                     widthCheck = false;
                 }
