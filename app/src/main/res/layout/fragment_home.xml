@@ -2,33 +2,83 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:ads="http://schemas.android.com/tools"
+    android:background="@drawable/ic_bg_menu"
     android:orientation="horizontal">
 
-    <LinearLayout
-        android:id="@+id/layoutGhep"
+    <ImageView
+        android:id="@+id/ivSound"
+        android:layout_width="@dimen/margin_80"
+        android:layout_height="@dimen/margin_80"
+        android:layout_margin="@dimen/margin_10"
+        android:src="@drawable/ic_sound_on" />
+
+    <ImageView
+        android:id="@+id/ivShare"
+        android:layout_width="@dimen/margin_80"
+        android:layout_height="@dimen/margin_80"
+        android:layout_alignParentRight="true"
+        android:layout_margin="@dimen/margin_10"
+        android:src="@drawable/ic_share" />
+
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="@dimen/margin_300"
+        android:layout_height="@dimen/margin_80"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/margin_10"
+        android:src="@drawable/ic_logo" />
+
+    <ImageView
+        android:id="@+id/ivRate"
+        android:layout_width="@dimen/margin_80"
+        android:layout_height="@dimen/margin_80"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/margin_10"
+        android:src="@drawable/ic_rate_app" />
+
+    <ImageView
+        android:id="@+id/ivMore"
+        android:layout_width="@dimen/margin_80"
+        android:layout_height="@dimen/margin_80"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/margin_10"
+        android:src="@drawable/ic_more" />
+
+
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_centerInParent="true">
 
-        <Button
+        <ImageView
             android:id="@+id/buttonGhep"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ghep Tranh" />
-    </LinearLayout>
+            android:layout_width="@dimen/margin_200"
+            android:layout_height="@dimen/margin_200"
+            android:layout_centerVertical="true"
+            android:layout_margin="@dimen/margin_20"
+            android:src="@drawable/ic_button_ghep" />
 
-    <LinearLayout
-        android:id="@+id/layoutPuzzle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/layoutGhep"
-        android:orientation="vertical">
-
-        <Button
+        <ImageView
             android:id="@+id/buttonPuzzle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Puzzle" />
-    </LinearLayout>
+            android:layout_width="@dimen/margin_200"
+            android:layout_height="@dimen/margin_200"
+            android:layout_centerVertical="true"
+            android:layout_margin="@dimen/margin_20"
+            android:layout_toRightOf="@+id/buttonGhep"
+            android:src="@drawable/ic_button_puzzle" />
+    </RelativeLayout>
+
+    <com.google.android.gms.ads.AdView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_80"
+        android:layout_toRightOf="@+id/ivRate"
+        android:layout_toLeftOf="@+id/ivMore"
+        android:layout_alignParentBottom="true"
+        ads:adSize="SMART_BANNER"
+        ads:adUnitId="@string/admob_banner_main"
+        android:layout_marginBottom="@dimen/margin_10"/>
+
 </RelativeLayout>

@@ -17,12 +17,10 @@ class HomeFragment: BaseFragment() {
     override fun initView(savedInstanceState: Bundle?) {
         super.initView(savedInstanceState)
         buttonGhep.setOnClickListener {
-            Log.e("HomeFragment", "layoutGhep")
             FragmentUtil.replaceFragmentAndAddToBackStack(activity!!, PaintingFragment.newInstance(), "")
         }
 
         buttonPuzzle.setOnClickListener {
-            Log.e("HomeFragment", "layoutPuzzle")
             val intent = Intent(activity, PuzzleActivity::class.java)
             startActivity(intent)
         }
