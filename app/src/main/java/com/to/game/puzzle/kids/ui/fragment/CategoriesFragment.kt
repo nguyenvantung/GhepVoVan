@@ -2,6 +2,13 @@ package com.to.game.puzzle.kids.ui.fragment
 
 import android.os.Bundle
 import com.to.game.puzzle.kids.R
+import com.to.game.puzzle.kids.constants.AppConstants.Companion.ANIMAL
+import com.to.game.puzzle.kids.constants.AppConstants.Companion.CARS
+import com.to.game.puzzle.kids.constants.AppConstants.Companion.DISNEY
+import com.to.game.puzzle.kids.constants.AppConstants.Companion.FISH
+import com.to.game.puzzle.kids.constants.AppConstants.Companion.PLANES
+import com.to.game.puzzle.kids.constants.AppConstants.Companion.PRINCESS
+import com.to.game.puzzle.kids.constants.AppConstants.Companion.TOM
 import com.to.game.puzzle.kids.ui.activity.BaseFragment
 import com.to.game.puzzle.kids.util.FragmentUtil
 import kotlinx.android.synthetic.main.fragment_menu_categories.*
@@ -9,13 +16,6 @@ import kotlinx.android.synthetic.main.fragment_menu_categories.*
 class CategoriesFragment: BaseFragment() {
 
     companion object{
-        const val ANIMAL = 1
-        const val TOM = 2
-        const val DISNEY = 3
-        const val CARS = 4
-        const val PRINCESS = 5
-        const val PLANES = 6
-        const val FISH = 7
         fun newInstance(): CategoriesFragment{
             return CategoriesFragment()
         }

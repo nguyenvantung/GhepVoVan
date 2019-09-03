@@ -2,13 +2,14 @@ package com.to.game.puzzle.kids.model
 
 import android.app.Activity
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
 import android.os.Environment
 import android.widget.ImageView
-import com.to.game.puzzle.kids.R
 import com.to.game.puzzle.kids.ui.activity.ImageCutter
 import java.io.File
-import java.util.ArrayList
+import java.util.*
+
 
 class Puzzle {
     var mActivity: Activity? = null
@@ -18,7 +19,7 @@ class Puzzle {
 
     fun createPuzzlePieces(
             aActivity: Activity, width: Int, height: Int,
-            imageView: ImageView, drawable: Int, path: String, horizontalResolution: Int, verticalResolution: Int
+            imageView: ImageView, drawable: Drawable, path: String, horizontalResolution: Int, verticalResolution: Int
     ): ArrayList<PuzzlePiece> {
         this.mActivity = aActivity
         this.puzzlePieceArrayList = ArrayList()
@@ -31,10 +32,10 @@ class Puzzle {
         return puzzlePieceArrayList
     }
 
-    private fun getDisplaySize(widthFinal: Int, heightFinal: Int, imageView: ImageView, drawable: Int) {
+    private fun getDisplaySize(widthFinal: Int, heightFinal: Int, imageView: ImageView, drawable: Drawable) {
         var image: Bitmap? = null
         try {
-            image = BitmapFactory.decodeResource(mActivity!!.resources, drawable)
+            image = (drawable as BitmapDrawable).bitmap
             mSourceImage = Bitmap.createScaledBitmap(image!!, widthFinal, heightFinal, false)
         } catch (ex: OutOfMemoryError) {
             ex.printStackTrace()

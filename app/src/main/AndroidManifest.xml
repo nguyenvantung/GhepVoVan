@@ -18,23 +18,29 @@
                    android:value="3142407999110458"/>
         <activity android:name="com.facebook.ads.AudienceNetworkActivity"
                   android:hardwareAccelerated="true" tools:ignore="WrongManifestParent"/>
-        <meta-data android:name="firebase_crashlytics_collection_enabled" android:value="false" />
+        <meta-data android:name="firebase_crashlytics_collection_enabled" android:value="false"/>
 
         <activity
+                android:launchMode="singleTop"
                 android:name=".ui.activity.MainActivity"
                 android:label="@string/app_name"
                 android:theme="@style/AppTheme.NoActionBar"
-                android:screenOrientation="landscape">
+                android:screenOrientation="sensorLandscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activity.PuzzleActivity"
-            android:screenOrientation="landscape"/>
+        <activity
+                android:launchMode="singleTop"
+                android:name=".ui.activity.PuzzleActivity"
+                android:theme="@style/AppTheme.NoActionBar"
+                android:screenOrientation="sensorLandscape"/>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
 </manifest>
