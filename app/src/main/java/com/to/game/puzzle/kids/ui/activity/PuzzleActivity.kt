@@ -13,6 +13,7 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.to.game.puzzle.kids.R
 import com.to.game.puzzle.kids.constants.AppConstants
@@ -25,7 +26,7 @@ import kotlinx.android.synthetic.main.puzzle_activity.*
 import java.util.*
 import java.util.concurrent.atomic.AtomicInteger
 
-class PuzzleActivity : AppCompatActivity() {
+class PuzzleActivity : FragmentActivity() {
     private var piecesModelListMain: MutableList<Pieces> = ArrayList()
     private var piecesModelHashMap = HashMap<String, Pieces>()
     private var countGrid = 0
@@ -136,15 +137,13 @@ class PuzzleActivity : AppCompatActivity() {
 
         // called when the item is long-clicked
         override fun onLongClick(view: View): Boolean {
-            // TODO Auto-generated method stub
-
             // create it from the object's tag
             val item = ClipData.Item(view.tag as CharSequence)
 
             val mimeTypes = arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN)
             val data = ClipData(view.tag.toString(), mimeTypes, item)
             val shadowBuilder = View.DragShadowBuilder(view)
-
+            UiUtil.playTouch(PuzzleActivity())
             view.startDrag(
                 data, //data to be dragged
                 shadowBuilder, //drag shadow

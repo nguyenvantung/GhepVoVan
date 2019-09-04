@@ -12,6 +12,7 @@ import com.to.game.puzzle.kids.ui.activity.PuzzleActivity
 import com.to.game.puzzle.kids.ui.adapter.OnCLickItemInterface
 import com.to.game.puzzle.kids.ui.adapter.SelectImageAdapter
 import com.to.game.puzzle.kids.util.FragmentUtil
+import com.to.game.puzzle.kids.util.UiUtil
 import kotlinx.android.synthetic.main.fragment_select_item.*
 import java.io.IOException
 
@@ -44,6 +45,7 @@ class SelectItemFragment: BaseFragment() {
         rclListItem.setHasFixedSize(true)
         val selectImageAdapter = SelectImageAdapter(path, listImage, object : OnCLickItemInterface{
             override fun onClickItem(pathImage: String) {
+                UiUtil.playTouch(activity!!)
                 val intent = Intent(activity, PuzzleActivity::class.java)
                 intent.putExtra(AppConstants.KEY_IMAGE_PUZZLE, pathImage)
                 startActivity(intent)

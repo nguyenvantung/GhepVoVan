@@ -6,4 +6,8 @@
     <string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
     <string name="admob_interstitial_id">ca-app-pub-7258268854083622/6567579132</string>
     <string name="admob_banner_main">ca-app-pub-7258268854083622/1915385238</string>
+
+    <string name="update_version_title">Do you want update new version app!</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>

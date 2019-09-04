@@ -13,5 +13,6 @@ class AppConstants {
         const val KEY_IMAGE_PUZZLE = "key_image_puzzle"
         var horizontalResolution = 3
         var verticalResolution = 3
+        var KEY_PLAY_SOUND = true
     }
 }

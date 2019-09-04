@@ -11,6 +11,7 @@ import com.to.game.puzzle.kids.constants.AppConstants.Companion.PRINCESS
 import com.to.game.puzzle.kids.constants.AppConstants.Companion.TOM
 import com.to.game.puzzle.kids.ui.activity.BaseFragment
 import com.to.game.puzzle.kids.util.FragmentUtil
+import com.to.game.puzzle.kids.util.UiUtil
 import kotlinx.android.synthetic.main.fragment_menu_categories.*
 
 class CategoriesFragment: BaseFragment() {
@@ -36,6 +37,7 @@ class CategoriesFragment: BaseFragment() {
     }
 
     private fun gotoItem(type: Int){
+        UiUtil.playTouch(activity!!)
         FragmentUtil.replaceFragmentAndAddToBackStack(activity!!, SelectItemFragment.newInstance(type), "")
     }
 }
