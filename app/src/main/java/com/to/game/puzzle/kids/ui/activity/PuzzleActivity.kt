@@ -4,8 +4,10 @@ import android.annotation.TargetApi
 import android.content.ClipData
 import android.content.ClipDescription
 import android.graphics.drawable.Drawable
+import android.media.MediaPlayer
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import android.view.DragEvent
 import android.view.View
 import android.view.ViewGroup
@@ -38,6 +40,7 @@ class PuzzleActivity : FragmentActivity() {
     private var widthCheck = true
     private var widthFinal: Int = 0
     private var heightFinal: Int = 0
+    private var mediaPlayer: MediaPlayer? = null
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -143,7 +146,7 @@ class PuzzleActivity : FragmentActivity() {
             val mimeTypes = arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN)
             val data = ClipData(view.tag.toString(), mimeTypes, item)
             val shadowBuilder = View.DragShadowBuilder(view)
-            UiUtil.playTouch(PuzzleActivity())
+            //UiUtil.playTouch(PuzzleActivity())
             view.startDrag(
                 data, //data to be dragged
                 shadowBuilder, //drag shadow
@@ -154,6 +157,11 @@ class PuzzleActivity : FragmentActivity() {
             view.visibility = View.INVISIBLE
             return true
         }
+    }
+
+    private fun mudicEnd() {
+        mediaPlayer = MediaPlayer.create(this, R.raw.phaohoa)
+        mediaPlayer!!.start()
     }
 
     inner class MyDragListener(private val imageView: ImageView?) : View.OnDragListener {
@@ -196,31 +204,33 @@ class PuzzleActivity : FragmentActivity() {
                                 setPuzzleListAdapter()
                                 piecesModel = null
                                 if (piecesModelListMain.size == 0) {
-                                    Toast.makeText(applicationContext, "GAME OVER", Toast.LENGTH_LONG).show()
+                                    animationEndPuzzle.visibility = View.VISIBLE
+                                    Handler().postDelayed({
+                                        mediaPlayer?.stop()
+                                        finish()}, 1000)
                                 }
                             } else {
                                 piecesModel = null
                                 view.visibility = View.VISIBLE
-                                Toast.makeText(applicationContext, "Not the correct Puzzle", Toast.LENGTH_LONG).show()
+                                //Toast.makeText(applicationContext, "Not the correct Puzzle", Toast.LENGTH_LONG).show()
                             }
                         } else {
                             val view1 = event.localState as View
                             view1.visibility = View.VISIBLE
-                            Toast.makeText(applicationContext, "You can't drop the image here", Toast.LENGTH_LONG)
-                                .show()
+                            //Toast.makeText(applicationContext, "You can't drop the image here", Toast.LENGTH_LONG).show()
                         }
                     } else if (v === scrollView) {
                         val view1 = event.localState as View
                         view1.visibility = View.VISIBLE
-                        Toast.makeText(applicationContext, "You can't drop the image here", Toast.LENGTH_LONG).show()
+                        //Toast.makeText(applicationContext, "You can't drop the image here", Toast.LENGTH_LONG).show()
                     } else if (v === listView2) {
                         val view1 = event.localState as View
                         view1.visibility = View.VISIBLE
-                        Toast.makeText(applicationContext, "You can't drop the image here", Toast.LENGTH_LONG).show()
+                        //Toast.makeText(applicationContext, "You can't drop the image here", Toast.LENGTH_LONG).show()
                     } else {
                         val view = event.localState as View
                         view.visibility = View.VISIBLE
-                        Toast.makeText(applicationContext, "You can't drop the image here", Toast.LENGTH_LONG).show()
+                        //Toast.makeText(applicationContext, "You can't drop the image here", Toast.LENGTH_LONG).show()
                     }
                 DragEvent.ACTION_DRAG_ENDED -> {
                 }
