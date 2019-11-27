@@ -34,6 +34,11 @@
         </activity>
         <activity
                 android:launchMode="singleTop"
+                android:name=".ui.activity.PaintingActivity"
+                android:theme="@style/AppTheme.NoActionBar"
+                android:screenOrientation="landscape"/>
+        <activity
+                android:launchMode="singleTop"
                 android:name=".ui.activity.PuzzleActivity"
                 android:theme="@style/AppTheme.NoActionBar"
                 android:screenOrientation="sensorLandscape"/>

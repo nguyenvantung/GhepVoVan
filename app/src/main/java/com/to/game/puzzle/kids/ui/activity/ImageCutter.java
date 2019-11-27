@@ -62,9 +62,13 @@ public class ImageCutter extends AppCompatActivity {
         return puzzlePieces;
     }
 
+     private File getDefaultFolder(){
+         return new  File(Environment.getExternalStorageDirectory(), "puzzles");
+     }
+
     private void saveSDcard(int i, int j, Bitmap cuttedPiece)
     {
-        File file = new File(Environment.getExternalStorageDirectory().getPath() + "/puzzles/sav"+i+j+".png");
+        File file = new File(getDefaultFolder().getPath(),   "save"+i+j+".png");
         try {
             file.createNewFile();
             FileOutputStream ostream = new FileOutputStream(file);

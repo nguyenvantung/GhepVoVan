@@ -1,5 +1,6 @@
 package com.to.game.puzzle.kids.ui.activity
 
+import android.Manifest
 import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -8,6 +9,8 @@ import android.net.Uri
 import android.os.AsyncTask
 import android.os.Bundle
 import android.util.Log
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.to.game.puzzle.kids.R
 import com.to.game.puzzle.kids.constants.AppConstants
 import com.to.game.puzzle.kids.ui.fragment.HomeFragment
@@ -28,6 +31,7 @@ class MainActivity : BaseActivity() {
 
     override fun initView(savedInstanceState: Bundle?) {
         super.initView(savedInstanceState)
+        grantPermissions()
         FragmentUtil.replaceFragmentAndAddToBackStack(supportFragmentManager, HomeFragment())
         mediaPlayer = MediaPlayer.create(this, R.raw.music)
         mediaPlayer!!.start()
@@ -65,7 +69,7 @@ class MainActivity : BaseActivity() {
             var newVersion: String? = null
             try {
                 newVersion =
-                    Jsoup.connect("https://play.google.com/store/apps/details?id=" + this@MainActivity.packageName + "&hl=it")
+                    Jsoup.connect("https://play.google.com/store/apps/details?id=$packageName&hl=it")
                         .timeout(30000)
                         .userAgent("Mozilla/5.0 (Windows; U; WindowsNT 5.1; en-US; rv1.8.1.6) Gecko/20070725 Firefox/2.0.0.6")
                         .referrer("http://www.google.com")
@@ -82,7 +86,7 @@ class MainActivity : BaseActivity() {
 
         override fun onPostExecute(onlineVersion: String?) {
             super.onPostExecute(onlineVersion)
-            if (onlineVersion != null && !onlineVersion.isEmpty()) {
+            if (onlineVersion != null && onlineVersion.isNotEmpty()) {
                 if (java.lang.Float.valueOf(currentVersion) < java.lang.Float.valueOf(onlineVersion)) {
                     handleShowUpdate()
                 }
@@ -101,14 +105,14 @@ class MainActivity : BaseActivity() {
                 startActivity(
                     Intent(
                         Intent.ACTION_VIEW,
-                        Uri.parse("market://details?id=" + this@MainActivity.packageName)
+                        Uri.parse("market://details?id=$packageName")
                     )
                 )
             } catch (anfe: android.content.ActivityNotFoundException) {
                 startActivity(
                     Intent(
                         Intent.ACTION_VIEW,
-                        Uri.parse("https://play.google.com/store/apps/details?id=" + this@MainActivity.packageName)
+                        Uri.parse("https://play.google.com/store/apps/details?id=$packageName")
                     )
                 )
             }
@@ -117,5 +121,12 @@ class MainActivity : BaseActivity() {
         }
 
         builder.create().show()
+    }
+
+    private fun grantPermissions() {
+        // Grant permissions
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE), 0)
+        }
     }
 }

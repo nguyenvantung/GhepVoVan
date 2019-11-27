@@ -7,6 +7,7 @@ import com.to.game.puzzle.kids.R
 import com.to.game.puzzle.kids.constants.AppConstants
 import com.to.game.puzzle.kids.ui.activity.BaseFragment
 import com.to.game.puzzle.kids.ui.activity.MainActivity
+import com.to.game.puzzle.kids.ui.activity.PaintingActivity
 import com.to.game.puzzle.kids.util.FragmentUtil
 import com.to.game.puzzle.kids.util.PreferenceHelper
 import com.to.game.puzzle.kids.util.UiUtil
@@ -27,7 +28,8 @@ class HomeFragment: BaseFragment() {
         linkApp = "https://play.google.com/store/apps/details?id=$appPackageName"
 
         buttonGhep.setOnClickListener {
-            FragmentUtil.replaceFragmentAndAddToBackStack(activity!!, PaintingFragment.newInstance(), "")
+            //FragmentUtil.replaceFragmentAndAddToBackStack(activity!!, startActivity(Intent(activity, PaintingActivity::class.java)), "")
+            startActivity(Intent(activity, PaintingActivity::class.java))
             UiUtil.playTouch(activity!!)
         }
 
