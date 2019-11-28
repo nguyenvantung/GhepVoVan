@@ -47,10 +47,9 @@ class TouchListener : OnTouchListener {
                 val xDiff = StrictMath.abs(piece!!.xCoord - lParams.leftMargin)
                 val yDiff = StrictMath.abs(piece!!.yCoord - lParams.topMargin)
                 if (xDiff <= tolerance && yDiff <= tolerance) {
-                    Log.e("TouchListener", "onTouch ok:" + motionEvent.rawX.toInt() + "=="+ motionEvent.rawY.toInt() + "=="+ piece!!.xCoord + "=="+ piece!!.yCoord)
                     piece!!.canMove = false
                     lParams.leftMargin = piece!!.xCoord
-                    lParams.topMargin = piece!!.yCoord
+                    lParams.topMargin = piece!!.yCoord - 20
                     view.layoutParams = lParams
                     fragment?.actionDone(view.id)
                     sendViewToBack(piece)
