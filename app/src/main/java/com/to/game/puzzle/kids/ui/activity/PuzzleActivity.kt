@@ -23,6 +23,7 @@ import com.to.game.puzzle.kids.model.Pieces
 import com.to.game.puzzle.kids.model.Puzzle
 import com.to.game.puzzle.kids.model.PuzzlePiece
 import com.to.game.puzzle.kids.ui.adapter.PuzzleAdapter
+import com.to.game.puzzle.kids.util.DebugLog
 import com.to.game.puzzle.kids.util.UiUtil
 import kotlinx.android.synthetic.main.puzzle_activity.*
 import java.util.*
@@ -50,24 +51,25 @@ class PuzzleActivity : FragmentActivity() {
         scrollView.setOnDragListener(MyDragListener(null))
         relativeLayout.setOnDragListener(MyDragListener(null))
         listView2.setOnDragListener(MyDragListener(null))
-        listView2!!.layoutManager = LinearLayoutManager(applicationContext)
+        listView2.layoutManager = LinearLayoutManager(applicationContext)
         puzzle = Puzzle()
         puzzlePiecesList.clear()
 
-        drawable = UiUtil.getDrawable(this, intent.getStringExtra(AppConstants.KEY_IMAGE_PUZZLE))
-        val obs = scrollView.viewTreeObserver
-        obs.addOnGlobalLayoutListener {
+        Handler().postDelayed({
+            drawable = UiUtil.getDrawable(this, intent.getStringExtra(AppConstants.KEY_IMAGE_PUZZLE))
             if (widthCheck) {
-                widthFinal = scrollView.width
-                heightFinal = scrollView.height
+                widthFinal = scrollView.measuredWidth
+                heightFinal = scrollView.measuredHeight
+                DebugLog.e("apppppp: $widthFinal :: $heightFinal")
                 puzzlePiecesList = puzzle.createPuzzlePieces(this, widthFinal, heightFinal, frameImage,
                     drawable!!,"/puzzles/",AppConstants.horizontalResolution, AppConstants.verticalResolution)
                 getAdapter()
                 widthCheck = false
+                setPuzzleListAdapter()
+                layoutLoading.visibility = View.GONE
             }
-        }
+        }, 500)
 
-        setPuzzleListAdapter()
     }
 
     private fun getAdapter() {
@@ -96,15 +98,14 @@ class PuzzleActivity : FragmentActivity() {
                 button2.layoutParams = params
                 relativeLayout.addView(button2)
 
-                var piecesModel: Pieces? = Pieces()
-                piecesModel!!.setpX(i)
+                var piecesModel = Pieces()
+                piecesModel.setpX(i)
                 piecesModel.setpY(j)
                 piecesModel.setPosition(countGrid)
                 piecesModel.setOriginalResource(puzzlePiecesList[countGrid].image!!)
                 piecesModelListMain.add(piecesModel)
                 piecesModelListMain.shuffle()
                 piecesModelHashMap["$i,$j"] = piecesModel
-                piecesModel = null
                 countGrid++
 
             }
@@ -130,8 +131,8 @@ class PuzzleActivity : FragmentActivity() {
             puzzleListAdapter = null
 
         puzzleListAdapter = PuzzleAdapter(this, piecesModelListMain)
-        listView2!!.setHasFixedSize(true)
-        listView2!!.adapter = puzzleListAdapter
+        listView2.setHasFixedSize(true)
+        listView2.adapter = puzzleListAdapter
 
         puzzleListAdapter!!.notifyDataSetChanged()
     }
@@ -160,7 +161,7 @@ class PuzzleActivity : FragmentActivity() {
     }
 
     private fun mudicEnd() {
-        mediaPlayer = MediaPlayer.create(this, R.raw.phaohoa)
+        mediaPlayer = MediaPlayer.create(this, R.raw.chpok)
         mediaPlayer!!.start()
     }
 

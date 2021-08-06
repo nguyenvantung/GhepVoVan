@@ -233,11 +233,11 @@ class PaintingActivity: BaseActivity(), ActionDoneInterface {
     }
 
     private fun musicDone() {
-        val mediaPlayer = MediaPlayer.create(this, R.raw.sf_0)
+        val mediaPlayer = MediaPlayer.create(this, R.raw.win)
         mediaPlayer.start()
     }
     private fun musicEnd() {
-        mediaPlayer = MediaPlayer.create(this, R.raw.phaohoa)
+        mediaPlayer = MediaPlayer.create(this, R.raw.chpok)
         mediaPlayer!!.start()
     }
 

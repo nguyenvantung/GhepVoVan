@@ -9,10 +9,8 @@ import com.to.game.puzzle.kids.ui.activity.BaseFragment
 import com.to.game.puzzle.kids.ui.activity.MainActivity
 import com.to.game.puzzle.kids.ui.activity.PaintingActivity
 import com.to.game.puzzle.kids.util.FragmentUtil
-import com.to.game.puzzle.kids.util.PreferenceHelper
 import com.to.game.puzzle.kids.util.UiUtil
 import kotlinx.android.synthetic.main.fragment_home.*
-import java.lang.Appendable
 
 class HomeFragment: BaseFragment() {
     var linkApp : String = ""
@@ -24,18 +22,28 @@ class HomeFragment: BaseFragment() {
     override fun initView(savedInstanceState: Bundle?) {
         super.initView(savedInstanceState)
 
-        val appPackageName = activity!!.packageName
+        val appPackageName = activity?.packageName
         linkApp = "https://play.google.com/store/apps/details?id=$appPackageName"
 
         buttonGhep.setOnClickListener {
-            //FragmentUtil.replaceFragmentAndAddToBackStack(activity!!, startActivity(Intent(activity, PaintingActivity::class.java)), "")
-            startActivity(Intent(activity, PaintingActivity::class.java))
-            UiUtil.playTouch(activity!!)
+            activity?.let {
+                startActivity(Intent(it, PaintingActivity::class.java))
+                UiUtil.playTouch(it)
+            }
         }
 
         buttonPuzzle.setOnClickListener {
-            UiUtil.playTouch(activity!!)
-            FragmentUtil.replaceFragmentAndAddToBackStack(activity!!, CategoriesFragment.newInstance(), "")
+            activity?.let {
+                UiUtil.playTouch(it)
+                FragmentUtil.pushFragment(it, CategoriesFragment.newInstance(), "")
+            }
+
+        }
+        buttonDraw.setOnClickListener {
+            activity?.let {
+                UiUtil.playTouch(it)
+                FragmentUtil.pushFragment(it, SelectCategoryDrawFragment(), "")
+            }
         }
 
         handleShowSound(isPlaySound)

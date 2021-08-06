@@ -20,6 +20,13 @@ abstract class BaseFragment : Fragment(){
 
     }
 
+    /**
+     * init data
+     */
+    protected open fun initData(savedInstanceState: Bundle?) {
+
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val resId = getResourceLayoutId()
@@ -28,6 +35,7 @@ abstract class BaseFragment : Fragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         initView(savedInstanceState)
+        initData(savedInstanceState)
     }
     /**
      * handle event back click in this method

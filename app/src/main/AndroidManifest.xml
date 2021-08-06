@@ -42,6 +42,8 @@
                 android:name=".ui.activity.PuzzleActivity"
                 android:theme="@style/AppTheme.NoActionBar"
                 android:screenOrientation="sensorLandscape"/>
+        <activity android:name=".ui.activity.ColorActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET"/>

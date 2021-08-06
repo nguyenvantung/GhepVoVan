@@ -38,6 +38,6 @@ class CategoriesFragment: BaseFragment() {
 
     private fun gotoItem(type: Int){
         UiUtil.playTouch(activity!!)
-        FragmentUtil.replaceFragmentAndAddToBackStack(activity!!, SelectItemFragment.newInstance(type), "")
+        FragmentUtil.pushFragment(activity!!, SelectItemFragment.newInstance(type), "")
     }
 }

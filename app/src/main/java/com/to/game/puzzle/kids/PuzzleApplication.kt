@@ -10,8 +10,8 @@ class PuzzleApplication: Application() {
 
     companion object{
         private var context: PuzzleApplication? = null
-        public fun getApplication(): PuzzleApplication {
-            return context!!
+        fun getApplication(): PuzzleApplication? {
+            return context
         }
     }
 }

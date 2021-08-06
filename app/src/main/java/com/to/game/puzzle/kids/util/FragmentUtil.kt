@@ -91,21 +91,21 @@ object FragmentUtil {
         replaceFragment(activity.supportFragmentManager, fragment)
     }
 
-    fun replaceFragmentAndAddToBackStack(
+    fun pushFragment(
         activity: FragmentActivity, fragment: Fragment,
         tag: String?
     ) {
         replaceFragment(activity.supportFragmentManager, fragment, tag, false, true)
     }
 
-    fun replaceFragmentAndAddToBackStack(
+    fun pushFragment(
         manager: FragmentManager, fragment: Fragment,
         tag: String?
     ) {
         replaceFragment(manager, fragment, tag, false, true)
     }
 
-    fun replaceFragmentAndAddToBackStack(manager: FragmentManager?, fragment: Fragment) {
+    fun pushFragment(manager: FragmentManager?, fragment: Fragment) {
         replaceFragment(manager, fragment, fragment.javaClass.name, false, true)
     }
 

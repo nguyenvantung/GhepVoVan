@@ -14,9 +14,7 @@ import androidx.core.content.ContextCompat
 import com.to.game.puzzle.kids.R
 import com.to.game.puzzle.kids.constants.AppConstants
 import com.to.game.puzzle.kids.ui.fragment.HomeFragment
-import com.to.game.puzzle.kids.ui.fragment.PaintingFragment
 import com.to.game.puzzle.kids.util.FragmentUtil
-import com.to.game.puzzle.kids.util.PreferenceHelper
 import org.jsoup.Jsoup
 
 
@@ -32,10 +30,10 @@ class MainActivity : BaseActivity() {
     override fun initView(savedInstanceState: Bundle?) {
         super.initView(savedInstanceState)
         grantPermissions()
-        FragmentUtil.replaceFragmentAndAddToBackStack(supportFragmentManager, HomeFragment())
+        FragmentUtil.pushFragment(supportFragmentManager, HomeFragment())
         mediaPlayer = MediaPlayer.create(this, R.raw.music)
-        mediaPlayer!!.start()
-        mediaPlayer!!.isLooping = true
+        mediaPlayer?.start()
+        mediaPlayer?.isLooping = true
         try {
             currentVersion = packageManager.getPackageInfo(packageName, 0).versionName
             GetVersionCode().execute()
@@ -47,9 +45,9 @@ class MainActivity : BaseActivity() {
 
     fun playSound(open: Boolean) {
         if (open) {
-            mediaPlayer!!.start()
+            mediaPlayer?.start()
         } else {
-            mediaPlayer!!.pause()
+            mediaPlayer?.pause()
         }
     }
 
