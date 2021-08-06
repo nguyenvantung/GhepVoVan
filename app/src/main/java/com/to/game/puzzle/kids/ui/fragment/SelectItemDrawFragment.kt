@@ -96,7 +96,7 @@ class SelectItemDrawFragment : BaseFragment(), OnClickItem{
     private fun getDataList(position: Int): Array<String> {
         var integerList: Array<String> = arrayOf()
         when (position) {
-            AppConstants.AMINAL -> {
+            AppConstants.ANIMAL -> {
                 item = "coloring/animal"
                 integerList = getFileItem("coloring/animal")
                 title.text = "Animal"
@@ -106,17 +106,17 @@ class SelectItemDrawFragment : BaseFragment(), OnClickItem{
                 integerList = getFileItem("coloring/car")
                 title.text = "Cars"
             }
-            AppConstants.FOOD -> {
+            AppConstants.FRUIT -> {
                 item = "coloring/food"
                 integerList = getFileItem("coloring/food")
                 title.text = "Food"
             }
-            AppConstants.MICKEY -> {
+            AppConstants.PRINCESS -> {
                 item = "coloring/mickey"
                 integerList = getFileItem("coloring/mickey")
                 title.text = "Mickey"
             }
-            AppConstants.MERMAIDS -> {
+            AppConstants.FISH -> {
                 item = "coloring/princesses"
                 integerList = getFileItem("coloring/princesses")
                 title.text = "People"

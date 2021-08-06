@@ -35,22 +35,22 @@ class SelectCategoryDrawFragment: BaseFragment(), View.OnClickListener {
         activity?.let {activity->
             when(v?.id){
                 R.id.itemAnimal ->{
-                    FragmentUtil.pushFragment(activity, SelectItemDrawFragment.newInstance(AppConstants.AMINAL), "")
+                    FragmentUtil.pushFragment(activity, SelectItemDrawFragment.newInstance(AppConstants.ANIMAL), "")
                 }
                 R.id.itemCar ->{
                     FragmentUtil.pushFragment(activity, SelectItemDrawFragment.newInstance(AppConstants.CARS), "")
                 }
                 R.id.itemMickey ->{
-                    FragmentUtil.pushFragment(activity, SelectItemDrawFragment.newInstance(AppConstants.MICKEY), "")
+                    FragmentUtil.pushFragment(activity, SelectItemDrawFragment.newInstance(AppConstants.PRINCESS), "")
                 }
                 R.id.itemSatan ->{
                     FragmentUtil.pushFragment(activity, SelectItemDrawFragment.newInstance(AppConstants.SANTA), "")
                 }
                 R.id.itemMermaids ->{
-                    FragmentUtil.pushFragment(activity, SelectItemDrawFragment.newInstance(AppConstants.MERMAIDS), "")
+                    FragmentUtil.pushFragment(activity, SelectItemDrawFragment.newInstance(AppConstants.FISH), "")
                 }
                 R.id.itemFruit ->{
-                    FragmentUtil.pushFragment(activity, SelectItemDrawFragment.newInstance(AppConstants.FOOD), "")
+                    FragmentUtil.pushFragment(activity, SelectItemDrawFragment.newInstance(AppConstants.FRUIT), "")
                 }
             }
             UiUtil.playSong(activity, R.raw.z_textures_menu)

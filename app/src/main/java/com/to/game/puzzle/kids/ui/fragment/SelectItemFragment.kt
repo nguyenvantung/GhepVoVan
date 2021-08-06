@@ -96,11 +96,10 @@ class SelectItemFragment: BaseFragment() {
         when(type){
             AppConstants.ANIMAL -> path = "ani"
             AppConstants.CARS -> path = "car"
-            AppConstants.DISNEY -> path = "disney"
+            AppConstants.SANTA -> path = "disney"
             AppConstants.FISH -> path = "fish"
-            AppConstants.PLANES -> path = "planes"
             AppConstants.PRINCESS -> path = "princess"
-            AppConstants.TOM -> path = "tom"
+            AppConstants.FRUIT -> path = "food"
         }
 
         var list: Array<String>? = null

@@ -4,11 +4,10 @@ import android.os.Bundle
 import com.to.game.puzzle.kids.R
 import com.to.game.puzzle.kids.constants.AppConstants.Companion.ANIMAL
 import com.to.game.puzzle.kids.constants.AppConstants.Companion.CARS
-import com.to.game.puzzle.kids.constants.AppConstants.Companion.DISNEY
 import com.to.game.puzzle.kids.constants.AppConstants.Companion.FISH
-import com.to.game.puzzle.kids.constants.AppConstants.Companion.PLANES
+import com.to.game.puzzle.kids.constants.AppConstants.Companion.FRUIT
 import com.to.game.puzzle.kids.constants.AppConstants.Companion.PRINCESS
-import com.to.game.puzzle.kids.constants.AppConstants.Companion.TOM
+import com.to.game.puzzle.kids.constants.AppConstants.Companion.SANTA
 import com.to.game.puzzle.kids.ui.activity.BaseFragment
 import com.to.game.puzzle.kids.util.FragmentUtil
 import com.to.game.puzzle.kids.util.UiUtil
@@ -28,11 +27,10 @@ class CategoriesFragment: BaseFragment() {
     override fun initView(savedInstanceState: Bundle?) {
         super.initView(savedInstanceState)
         animal.setOnClickListener { gotoItem(ANIMAL) }
-        tom.setOnClickListener { gotoItem(TOM) }
-        disney.setOnClickListener { gotoItem(DISNEY) }
+        food.setOnClickListener { gotoItem(FRUIT) }
+        santa.setOnClickListener { gotoItem(SANTA) }
         cart.setOnClickListener { gotoItem(CARS) }
         princess.setOnClickListener { gotoItem(PRINCESS) }
-        helicopter.setOnClickListener { gotoItem(PLANES) }
         fish.setOnClickListener { gotoItem(FISH) }
     }
 

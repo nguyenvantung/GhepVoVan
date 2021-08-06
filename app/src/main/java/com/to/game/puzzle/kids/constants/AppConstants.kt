@@ -3,24 +3,16 @@ package com.to.game.puzzle.kids.constants
 class AppConstants {
     companion object {
         const val ANIMAL = 1
-        const val TOM = 2
-        const val DISNEY = 3
+        const val CARS = 2
+        const val FRUIT = 3
+        const val SANTA = 4
         const val PRINCESS = 5
-        const val PLANES = 6
-        const val FISH = 7
+        const val FISH = 6
 
         const val KEY_IMAGE_PUZZLE = "key_image_puzzle"
         var horizontalResolution = 3
         var verticalResolution = 3
         var KEY_PLAY_SOUND = true
-
-
-        const val AMINAL = 1
-        const val CARS = 2
-        const val FOOD = 3
-        const val MICKEY = 4
-        const val SANTA = 5
-        const val MERMAIDS = 10
 
         const val WIDTH_BITMAP = 896
         const val HEIGHT_BITMAP = 896
