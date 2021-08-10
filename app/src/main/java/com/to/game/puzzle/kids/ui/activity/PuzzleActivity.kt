@@ -56,7 +56,11 @@ class PuzzleActivity : FragmentActivity() {
         puzzlePiecesList.clear()
 
         Handler().postDelayed({
-            drawable = UiUtil.getDrawable(this, intent.getStringExtra(AppConstants.KEY_IMAGE_PUZZLE))
+            drawable = intent.getStringExtra(AppConstants.KEY_IMAGE_PUZZLE)?.let {
+                UiUtil.getDrawable(this,
+                    it
+                )
+            }
             if (widthCheck) {
                 widthFinal = scrollView.measuredWidth
                 heightFinal = scrollView.measuredHeight

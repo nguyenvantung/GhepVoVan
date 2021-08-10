@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "858336505620",
+    "project_id": "coloring-and-puzzzle",
+    "storage_bucket": "coloring-and-puzzzle.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:858336505620:android:9ce0b1e6ca05f17a48dc01",
+        "android_client_info": {
+          "package_name": "tet.to.kv.game.puzzle.kids"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "858336505620-99hg05g9s6ckgbsdk2efjru78rs6mvnq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "tet.to.kv.game.puzzle.kids",
+            "certificate_hash": "f608fc5fbae555f9fe1e2e5834fa4c98b1cd7574"
+          }
+        },
+        {
+          "client_id": "858336505620-q5isq2ij0kredd2b949u5dqtnveq4e8i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrxsfJiS64ppcbKtbDFBn0D04irLz0fJI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "858336505620-q5isq2ij0kredd2b949u5dqtnveq4e8i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

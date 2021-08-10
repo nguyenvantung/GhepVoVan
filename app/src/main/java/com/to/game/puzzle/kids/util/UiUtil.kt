@@ -45,7 +45,7 @@ class UiUtil {
             mediaPlayer.start()
         }
 
-        fun overlay(bmp1: Bitmap, bmp2: Bitmap?): Bitmap? {
+        fun overlay(bmp1: Bitmap, bmp2: Bitmap): Bitmap? {
             val bmOverlay = Bitmap.createBitmap(bmp1.width, bmp1.height, bmp1.config)
             val canvas = Canvas(bmOverlay)
             canvas.drawBitmap(bmp1, Matrix(), null)

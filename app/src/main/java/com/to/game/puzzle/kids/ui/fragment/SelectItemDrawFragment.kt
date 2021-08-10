@@ -134,7 +134,7 @@ class SelectItemDrawFragment : BaseFragment(), OnClickItem{
     private fun getFileItem(path: String): Array<String> {
         var list: Array<String> = arrayOf()
         try {
-            list = activity!!.assets.list(path)
+            list = activity!!.assets.list(path)?: arrayOf()
         } catch (e: IOException) {
             e.printStackTrace()
         }

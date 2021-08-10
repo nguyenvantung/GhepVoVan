@@ -245,7 +245,7 @@ class PreferenceHelper private constructor() {
          * get [String] value
          */
         fun getString(key: String, defaultValue: String): String {
-            return getPreference().getString(key, defaultValue)
+            return getPreference().getString(key, defaultValue).toString()
         }
 
         /**
