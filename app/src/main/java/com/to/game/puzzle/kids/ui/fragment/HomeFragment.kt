@@ -35,14 +35,14 @@ class HomeFragment: BaseFragment() {
         buttonPuzzle.setOnClickListener {
             activity?.let {
                 UiUtil.playTouch(it)
-                FragmentUtil.pushFragment(it, CategoriesFragment.newInstance(), "")
+                FragmentUtil.pushFragment(it, CategoriesFragment.newInstance(isColoring = false), "")
             }
 
         }
         buttonDraw.setOnClickListener {
             activity?.let {
                 UiUtil.playTouch(it)
-                FragmentUtil.pushFragment(it, SelectCategoryDrawFragment(), "")
+                FragmentUtil.pushFragment(it, CategoriesFragment.newInstance(isColoring = true), "")
             }
         }
 

@@ -2,6 +2,7 @@ package com.to.game.puzzle.kids.ui.fragment
 
 import android.os.Bundle
 import com.to.game.puzzle.kids.R
+import com.to.game.puzzle.kids.constants.AppConstants
 import com.to.game.puzzle.kids.constants.AppConstants.Companion.ANIMAL
 import com.to.game.puzzle.kids.constants.AppConstants.Companion.CARS
 import com.to.game.puzzle.kids.constants.AppConstants.Companion.FISH
@@ -15,9 +16,16 @@ import kotlinx.android.synthetic.main.fragment_menu_categories.*
 
 class CategoriesFragment: BaseFragment() {
 
+    var isColoring = false
+
     companion object{
-        fun newInstance(): CategoriesFragment{
-            return CategoriesFragment()
+        const val KEY_SCREEN_TYPE = "KEY_SCREEN_TYPE"
+        fun newInstance(isColoring: Boolean): CategoriesFragment{
+            val fragment = CategoriesFragment()
+            fragment.apply {
+                arguments?.putBoolean(KEY_SCREEN_TYPE, isColoring)
+            }
+            return fragment
         }
     }
     override fun getResourceLayoutId(): Int {
@@ -25,6 +33,10 @@ class CategoriesFragment: BaseFragment() {
     }
 
     override fun initView(savedInstanceState: Bundle?) {
+        arguments?.let {
+            isColoring = it.getBoolean(KEY_SCREEN_TYPE, false)
+        }
+
         super.initView(savedInstanceState)
         animal.setOnClickListener { gotoItem(ANIMAL) }
         food.setOnClickListener { gotoItem(FRUIT) }
@@ -35,7 +47,14 @@ class CategoriesFragment: BaseFragment() {
     }
 
     private fun gotoItem(type: Int){
-        UiUtil.playTouch(activity!!)
-        FragmentUtil.pushFragment(activity!!, SelectItemFragment.newInstance(type), "")
+        activity?.let {
+            UiUtil.playTouch(it)
+            if(isColoring){
+                FragmentUtil.pushFragment(it, SelectItemDrawFragment.newInstance(type), "")
+            }else{
+                FragmentUtil.pushFragment(it, SelectItemFragment.newInstance(type), "")
+            }
+        }
+
     }
 }

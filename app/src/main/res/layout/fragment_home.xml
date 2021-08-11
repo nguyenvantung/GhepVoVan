@@ -3,14 +3,22 @@
     xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_bg_menu"
+    android:background="@drawable/ic_bg_app"
     android:orientation="horizontal">
+
+    <ImageView
+        android:layout_width="@dimen/_180sdp"
+        android:layout_height="@dimen/_150sdp"
+        android:src="@drawable/ic_logo"
+        android:layout_marginTop="-50dp"
+        android:layout_marginLeft="@dimen/_10sdp"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="bottom">
+        android:gravity="bottom"
+        android:visibility="gone">
         <ImageView
             android:id="@+id/ivSetting"
             android:layout_width="@dimen/margin_60"
@@ -52,32 +60,30 @@
     </LinearLayout>
 
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true">
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true">
 
         <ImageView
             android:id="@+id/buttonGhep"
-            android:layout_width="@dimen/margin_150"
-            android:layout_height="@dimen/margin_150"
-            android:layout_margin="@dimen/margin_20"
-            android:src="@drawable/ic_button_ghep" />
+            android:layout_width="@dimen/_180sdp"
+            android:layout_height="@dimen/_180sdp"
+            android:src="@drawable/ic_jigsaw" />
 
         <ImageView
             android:id="@+id/buttonPuzzle"
-            android:layout_width="@dimen/margin_150"
-            android:layout_height="@dimen/margin_150"
-            android:layout_margin="@dimen/margin_20"
+            android:layout_width="@dimen/_180sdp"
+            android:layout_height="@dimen/_180sdp"
             android:layout_toRightOf="@+id/buttonGhep"
-            android:src="@drawable/ic_button_puzzle" />
+            android:src="@drawable/ic_puzzle" />
 
         <ImageView
             android:layout_below="@+id/buttonGhep"
             android:id="@+id/buttonDraw"
-            android:layout_width="@dimen/margin_150"
-            android:layout_height="@dimen/margin_150"
-            android:layout_margin="@dimen/margin_20"
-            android:src="@drawable/ic_button_ghep" />
-    </RelativeLayout>
+            android:layout_width="@dimen/_180sdp"
+            android:layout_height="@dimen/_180sdp"
+            android:src="@drawable/ic_coloring" />
+    </LinearLayout>
 </RelativeLayout>

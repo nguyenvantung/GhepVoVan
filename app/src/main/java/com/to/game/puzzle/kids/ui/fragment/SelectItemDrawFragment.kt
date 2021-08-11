@@ -3,11 +3,8 @@ package com.to.game.puzzle.kids.ui.fragment
 import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
-import android.util.Log
 import androidx.recyclerview.widget.GridLayoutManager
-import com.google.android.gms.ads.AdListener
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.to.game.puzzle.kids.R
 import com.to.game.puzzle.kids.`interface`.OnClickItem
 import com.to.game.puzzle.kids.constants.AppConstants
@@ -59,39 +56,8 @@ class SelectItemDrawFragment : BaseFragment(), OnClickItem{
             listItem.adapter = adapter
             adapter.setOnClickItem(this)
         }
-
-        setUpAdmob()
-        showAdViewFull()
     }
 
-    private fun showAdViewFull() {
-        // Create the InterstitialAd and set the adUnitId.
-        interstitialAd = InterstitialAd(activity)
-        // Defined in res/values/strings.xml
-        interstitialAd?.let {it->
-            it.setAdUnitId(AppConstants.ADMOB_UNIT_ID)
-            val adRequest = AdRequest.Builder().build()
-            it.loadAd(adRequest)
-            it.setAdListener(object : AdListener() {
-                override fun onAdLoaded() {
-                    super.onAdLoaded()
-                    if (isShowFirst > 0) {
-                        it.show()
-                    }
-                }
-            })
-        }
-
-    }
-
-    private fun showInterstitial() {
-        // Show the ad if it's ready. Otherwise toast and restart the game.
-        interstitialAd?.let {
-            if(it.isLoaded){
-                it.show()
-            }
-        }
-    }
 
     private fun getDataList(position: Int): Array<String> {
         var integerList: Array<String> = arrayOf()
@@ -141,38 +107,6 @@ class SelectItemDrawFragment : BaseFragment(), OnClickItem{
         return list
     }
 
-    private fun setUpAdmob() {
-        val adRequest = AdRequest.Builder()
-            .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-            .build()
-
-        // Start loading the ad in the background.
-        bannerAds.loadAd(adRequest)
-        bannerAds.adListener = object : AdListener() {
-            override fun onAdLoaded() {
-                // Code to be executed when an ad finishes loading.
-            }
-
-            override fun onAdFailedToLoad(errorCode: Int) {
-                // Code to be executed when an ad request fails.
-                Log.e("load ads", "onAdFailedToLoad:$errorCode")
-            }
-
-            override fun onAdOpened() {
-                // Code to be executed when an ad opens an overlay that
-                // covers the screen.
-            }
-
-            override fun onAdLeftApplication() {
-                // Code to be executed when the user has left the app.
-            }
-
-            override fun onAdClosed() {
-                // Code to be executed when when the user is about to return
-                // to the app after tapping on an ad.
-            }
-        }
-    }
 
 
     override fun onPause() {
