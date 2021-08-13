@@ -3,7 +3,7 @@ package com.to.game.puzzle.kids.ui.fragment
 import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.to.game.puzzle.kids.R
 import com.to.game.puzzle.kids.`interface`.OnClickItem
@@ -14,7 +14,6 @@ import com.to.game.puzzle.kids.ui.adapter.SelectItemDrawAdapter
 import com.to.game.puzzle.kids.util.UiUtil
 import com.to.game.puzzle.kids.view.ItemOffsetDecoration
 import kotlinx.android.synthetic.main.fragment_choise.*
-import kotlinx.android.synthetic.main.layout_toolbar.*
 import java.io.IOException
 
 class SelectItemDrawFragment : BaseFragment(), OnClickItem{
@@ -39,11 +38,9 @@ class SelectItemDrawFragment : BaseFragment(), OnClickItem{
     override fun initView(savedInstanceState: Bundle?) {
         super.initView(savedInstanceState)
         activity?.let {
-            listItem.layoutManager = GridLayoutManager(it, 2)
+            listItem.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
             val itemDecoration = ItemOffsetDecoration(it, R.dimen.size_5)
             listItem.addItemDecoration(itemDecoration)
-            val font1 = Typeface.createFromAsset(activity!!.assets, "coloring/fonts/cooper_black.ttf")
-            title.typeface = font1
         }
 
     }
@@ -65,34 +62,27 @@ class SelectItemDrawFragment : BaseFragment(), OnClickItem{
             AppConstants.ANIMAL -> {
                 item = "coloring/animal"
                 integerList = getFileItem("coloring/animal")
-                title.text = "Animal"
             }
             AppConstants.CARS -> {
                 item = "coloring/car"
                 integerList = getFileItem("coloring/car")
-                title.text = "Cars"
             }
             AppConstants.FRUIT -> {
                 item = "coloring/food"
                 integerList = getFileItem("coloring/food")
-                title.text = "Food"
             }
             AppConstants.PRINCESS -> {
                 item = "coloring/mickey"
                 integerList = getFileItem("coloring/mickey")
-                title.text = "Mickey"
             }
             AppConstants.FISH -> {
                 item = "coloring/princesses"
                 integerList = getFileItem("coloring/princesses")
-                title.text = "People"
             }
             AppConstants.SANTA -> {
                 item = "coloring/santa"
                 integerList = getFileItem("coloring/santa")
-                title.text = "Santa"
             }
-            else -> title.text = "Animal"
         }
         return integerList
     }

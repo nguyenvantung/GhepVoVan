@@ -55,5 +55,5 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:19.0.0'
     implementation 'com.google.firebase:firebase-ads:20.2.0'
 
-    //implementation 'com.intuit.sdp:sdp-android:1.0.6'
+    implementation 'com.intuit.sdp:sdp-android:1.0.6'
 }

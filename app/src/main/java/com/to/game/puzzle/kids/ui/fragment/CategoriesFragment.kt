@@ -22,9 +22,9 @@ class CategoriesFragment: BaseFragment() {
         const val KEY_SCREEN_TYPE = "KEY_SCREEN_TYPE"
         fun newInstance(isColoring: Boolean): CategoriesFragment{
             val fragment = CategoriesFragment()
-            fragment.apply {
-                arguments?.putBoolean(KEY_SCREEN_TYPE, isColoring)
-            }
+            val bundle = Bundle()
+            bundle.putBoolean(KEY_SCREEN_TYPE, isColoring)
+            fragment.arguments = bundle
             return fragment
         }
     }
