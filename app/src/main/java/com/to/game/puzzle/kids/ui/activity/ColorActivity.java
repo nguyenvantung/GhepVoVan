@@ -17,6 +17,7 @@ import android.net.Uri;
 import android.opengl.GLSurfaceView;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -32,6 +33,15 @@ import androidx.core.internal.view.SupportMenu;
 import androidx.core.view.GestureDetectorCompat;
 import androidx.fragment.app.FragmentActivity;
 
+import com.google.android.gms.ads.AdError;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.FullScreenContentCallback;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.to.game.puzzle.kids.R;
 import com.to.game.puzzle.kids.constants.AppConstants;
 import com.to.game.puzzle.kids.constants.ConstantSource;
@@ -91,6 +101,8 @@ public class ColorActivity extends FragmentActivity implements GestureDetector.O
     private Drawable drawableData;
     private int colorDraw;
 
+    private InterstitialAd mInterstitialAd;
+
 
     public void setColorOption(int color){
         colorDraw = getResources().getColor(color);
@@ -144,6 +156,7 @@ public class ColorActivity extends FragmentActivity implements GestureDetector.O
         setContentView(R.layout.activity_color);
         initView();
         initData();
+        initAdsFull();
     }
 
     private void initView(){
@@ -186,6 +199,9 @@ public class ColorActivity extends FragmentActivity implements GestureDetector.O
         imgSelect.setColorFilter(getBaseContext().getResources().getColor(R.color.aquamarine));
         handleClickView();
     }
+
+
+
     private void handleClickView(){
 
         for(int index = 0; index < layoutPencil.getChildCount(); index++) {
@@ -238,7 +254,11 @@ public class ColorActivity extends FragmentActivity implements GestureDetector.O
 
     @Override
     public void onBackPressed() {
-        handleBackApp();
+        if (mInterstitialAd != null) {
+            mInterstitialAd.show(this);
+        } else {
+            handleBackApp();
+        }
     }
 
     @Override
@@ -726,6 +746,61 @@ public class ColorActivity extends FragmentActivity implements GestureDetector.O
         });
 
         builder.create().show();
+    }
+
+    private void initAdsFull(){
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+
+            }
+        });
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+
+        InterstitialAd.load(this, getString(R.string.admob_interstitial_id), adRequest,
+                new InterstitialAdLoadCallback() {
+                    @Override
+                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                        // The mInterstitialAd reference will be null until
+                        // an ad is loaded.
+                        mInterstitialAd = interstitialAd;
+                        showAdsFull();
+                    }
+
+                    @Override
+                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                        // Handle the error
+                        mInterstitialAd = null;
+                    }
+                });
+    }
+
+    private void showAdsFull(){
+        mInterstitialAd.setFullScreenContentCallback(new FullScreenContentCallback(){
+            @Override
+            public void onAdDismissedFullScreenContent() {
+                // Called when fullscreen content is dismissed.
+                Log.d("TAG", "The ad was dismissed.");
+                handleBackApp();
+            }
+
+            @Override
+            public void onAdFailedToShowFullScreenContent(AdError adError) {
+                // Called when fullscreen content failed to show.
+                Log.d("TAG", "The ad failed to show.");
+                handleBackApp();
+            }
+
+            @Override
+            public void onAdShowedFullScreenContent() {
+                // Called when fullscreen content is shown.
+                // Make sure to set your reference to null so you don't
+                // show it a second time.
+                mInterstitialAd = null;
+                Log.d("TAG", "The ad was shown.");
+            }
+        });
     }
 
 }

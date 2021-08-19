@@ -44,6 +44,9 @@ class CategoriesFragment: BaseFragment() {
         cart.setOnClickListener { gotoItem(CARS) }
         princess.setOnClickListener { gotoItem(PRINCESS) }
         fish.setOnClickListener { gotoItem(FISH) }
+        imBackItem.setOnClickListener {
+            popBackStack()
+        }
     }
 
     private fun gotoItem(type: Int){

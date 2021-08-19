@@ -51,6 +51,8 @@ abstract class BaseFragment : Fragment(){
         val backStackCount = fm.backStackEntryCount
         if (backStackCount > 0) {
             activity!!.supportFragmentManager.popBackStack()
+        }else{
+            onBackPressed()
         }
     }
 }

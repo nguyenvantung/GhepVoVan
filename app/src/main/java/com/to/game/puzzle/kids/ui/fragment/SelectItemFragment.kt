@@ -13,6 +13,7 @@ import com.to.game.puzzle.kids.ui.adapter.OnCLickItemInterface
 import com.to.game.puzzle.kids.ui.adapter.SelectImageAdapter
 import com.to.game.puzzle.kids.util.FragmentUtil
 import com.to.game.puzzle.kids.util.UiUtil
+import kotlinx.android.synthetic.main.fragment_menu_categories.*
 import kotlinx.android.synthetic.main.fragment_select_item.*
 import java.io.IOException
 
@@ -88,6 +89,10 @@ class SelectItemFragment: BaseFragment() {
             tvSetting8.setBackgroundResource(R.drawable.bg_setting_pie_select)
             AppConstants.horizontalResolution = 8
             AppConstants.verticalResolution = 8
+        }
+
+        imBackMenu.setOnClickListener {
+            popBackStack()
         }
     }
 

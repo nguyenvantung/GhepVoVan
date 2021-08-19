@@ -14,6 +14,8 @@ import com.to.game.puzzle.kids.ui.adapter.SelectItemDrawAdapter
 import com.to.game.puzzle.kids.util.UiUtil
 import com.to.game.puzzle.kids.view.ItemOffsetDecoration
 import kotlinx.android.synthetic.main.fragment_choise.*
+import kotlinx.android.synthetic.main.fragment_choise.imBackMenu
+import kotlinx.android.synthetic.main.fragment_select_item.*
 import java.io.IOException
 
 class SelectItemDrawFragment : BaseFragment(), OnClickItem{
@@ -41,6 +43,9 @@ class SelectItemDrawFragment : BaseFragment(), OnClickItem{
             listItem.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
             val itemDecoration = ItemOffsetDecoration(it, R.dimen.size_5)
             listItem.addItemDecoration(itemDecoration)
+        }
+        imBackMenu.setOnClickListener {
+            popBackStack()
         }
 
     }

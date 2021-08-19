@@ -3,14 +3,22 @@ package com.to.game.puzzle.kids.ui.activity
 import android.graphics.BitmapFactory
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.os.Debug
 import android.os.Handler
 import android.util.DisplayMetrics
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.RelativeLayout
+import com.google.android.gms.ads.AdError
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.FullScreenContentCallback
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.to.game.puzzle.kids.R
 import com.to.game.puzzle.kids.`interface`.ActionDoneInterface
 import com.to.game.puzzle.kids.model.AnimalPiece
+import com.to.game.puzzle.kids.util.DebugLog
 import com.to.game.puzzle.kids.view.TouchListener
 import kotlinx.android.synthetic.main.painting_fragment.*
 import java.io.IOException
@@ -28,6 +36,8 @@ class PaintingActivity: BaseActivity(), ActionDoneInterface {
 
     private var mediaPlayer: MediaPlayer? = null
 
+    private var mInterstitialAd: InterstitialAd? = null
+
 
     override fun initView(savedInstanceState: Bundle?) {
         super.initView(savedInstanceState)
@@ -39,7 +49,56 @@ class PaintingActivity: BaseActivity(), ActionDoneInterface {
             handleGetImageAssets()
             handleSetupImageMove()
         }, 500)
+        initAdsFull()
+
     }
+
+    private fun initAdsFull(){
+        var adRequest = AdRequest.Builder().build()
+        InterstitialAd.load(this, getString(R.string.admob_interstitial_id), adRequest, object : InterstitialAdLoadCallback() {
+            override fun onAdFailedToLoad(adError: LoadAdError) {
+                DebugLog.e(adError?.message)
+                mInterstitialAd = null
+            }
+
+            override fun onAdLoaded(interstitialAd: InterstitialAd) {
+                DebugLog.e("Ad was loaded.")
+                mInterstitialAd = interstitialAd
+                loadAdsFull()
+            }
+        })
+
+
+    }
+
+    private fun loadAdsFull(){
+        mInterstitialAd?.fullScreenContentCallback = object: FullScreenContentCallback() {
+            override fun onAdDismissedFullScreenContent() {
+                finish()
+                DebugLog.e("Ad was dismissed.")
+            }
+
+            override fun onAdFailedToShowFullScreenContent(adError: AdError?) {
+                finish()
+                DebugLog.e("Ad failed to show.")
+            }
+
+            override fun onAdShowedFullScreenContent() {
+                DebugLog.e("Ad showed fullscreen content.")
+                mInterstitialAd = null;
+            }
+        }
+    }
+
+    override fun onBackPressed() {
+        if (mInterstitialAd != null) {
+            mInterstitialAd?.show(this)
+        } else {
+            super.onBackPressed()
+        }
+    }
+
+
     override fun getResourceLayoutId(): Int {
         return R.layout.painting_fragment
     }
