@@ -41,7 +41,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     // animation
-    implementation 'com.airbnb.android:lottie:2.2.5'
+    implementation 'com.airbnb.android:lottie:3.4.0'
     implementation 'org.jsoup:jsoup:1.11.3'
 
     // Import the BoM for the Firebase platform

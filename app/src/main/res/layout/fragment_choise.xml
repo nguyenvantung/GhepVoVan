@@ -35,7 +35,7 @@
         android:layout_height="@dimen/_60sdp"
         android:layout_alignParentBottom="true"
         ads:adSize="SMART_BANNER"
-        ads:adUnitId="ca-app-pub-7258268854083622/5423112024" />
+        ads:adUnitId="@string/admob_banner_main" />
 
 
 </RelativeLayout>
