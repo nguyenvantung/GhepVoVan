@@ -61,13 +61,12 @@ class PuzzleActivity : FragmentActivity() {
         listView2.layoutManager = LinearLayoutManager(applicationContext)
         puzzle = Puzzle()
         puzzlePiecesList.clear()
-
+        drawable = intent.getStringExtra(AppConstants.KEY_IMAGE_PUZZLE)?.let {
+            UiUtil.getDrawable(this,
+                it
+            )
+        }
         Handler().postDelayed({
-            drawable = intent.getStringExtra(AppConstants.KEY_IMAGE_PUZZLE)?.let {
-                UiUtil.getDrawable(this,
-                    it
-                )
-            }
             if (widthCheck) {
                 widthFinal = scrollView.measuredWidth
                 heightFinal = scrollView.measuredHeight
@@ -79,7 +78,7 @@ class PuzzleActivity : FragmentActivity() {
                 setPuzzleListAdapter()
                 layoutLoading.visibility = View.GONE
             }
-        }, 500)
+        }, 1000)
         initAdsFull()
 
     }

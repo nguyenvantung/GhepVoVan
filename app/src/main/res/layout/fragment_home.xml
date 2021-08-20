@@ -20,26 +20,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/_30sdp">
 
         <ImageView
             android:id="@+id/buttonGhep"
-            android:layout_width="@dimen/_180sdp"
-            android:layout_height="@dimen/_180sdp"
-            android:src="@drawable/ic_jigsaw" />
+            android:layout_width="@dimen/_160sdp"
+            android:layout_height="@dimen/_160sdp"
+            android:src="@drawable/ic_jigsaw"
+            android:visibility="gone"/>
 
         <ImageView
             android:id="@+id/buttonPuzzle"
-            android:layout_width="@dimen/_180sdp"
-            android:layout_height="@dimen/_180sdp"
+            android:layout_width="@dimen/_160sdp"
+            android:layout_height="@dimen/_160sdp"
             android:layout_toRightOf="@+id/buttonGhep"
             android:src="@drawable/ic_puzzle" />
 
         <ImageView
             android:layout_below="@+id/buttonGhep"
             android:id="@+id/buttonDraw"
-            android:layout_width="@dimen/_180sdp"
-            android:layout_height="@dimen/_180sdp"
+            android:layout_width="@dimen/_160sdp"
+            android:layout_height="@dimen/_160sdp"
             android:src="@drawable/ic_coloring" />
     </LinearLayout>
 
