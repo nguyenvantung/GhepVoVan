@@ -53,6 +53,8 @@ class SelectItemFragment: BaseFragment() {
                 //FragmentUtil.replaceFragmentAndAddToBackStack(activity!!, PuzzleFragment.newInstance(pathImage), "")
             }
         })
+        AppConstants.horizontalResolution = 3
+        AppConstants.verticalResolution = 3
         rclListItem.adapter = selectImageAdapter
         tvSetting3.setOnClickListener {
             setDefaultButton()
