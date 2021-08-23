@@ -7,7 +7,6 @@ import com.to.game.puzzle.kids.R
 import com.to.game.puzzle.kids.constants.AppConstants
 import com.to.game.puzzle.kids.ui.activity.BaseFragment
 import com.to.game.puzzle.kids.ui.activity.MainActivity
-import com.to.game.puzzle.kids.ui.activity.PaintingActivity
 import com.to.game.puzzle.kids.util.FragmentUtil
 import com.to.game.puzzle.kids.util.UiUtil
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -24,13 +23,6 @@ class HomeFragment: BaseFragment() {
 
         val appPackageName = activity?.packageName
         linkApp = "https://play.google.com/store/apps/details?id=$appPackageName"
-
-        buttonGhep.setOnClickListener {
-            activity?.let {
-                startActivity(Intent(it, PaintingActivity::class.java))
-                UiUtil.playTouch(it)
-            }
-        }
 
         buttonPuzzle.setOnClickListener {
             activity?.let {
