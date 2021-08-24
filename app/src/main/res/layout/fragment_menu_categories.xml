@@ -10,12 +10,11 @@
         android:id="@+id/imBackItem"
         android:layout_width="@dimen/margin_50"
         android:layout_height="@dimen/margin_50"
-        android:layout_margin="@dimen/margin_10"
         android:src="@drawable/ic_back" />
 
 
     <RelativeLayout
-        android:layout_width="@dimen/_500sdp"
+        android:layout_width="@dimen/_450sdp"
         android:layout_height="@dimen/_250sdp"
         android:background="@drawable/ic_bg_item"
         android:layout_centerInParent="true"
