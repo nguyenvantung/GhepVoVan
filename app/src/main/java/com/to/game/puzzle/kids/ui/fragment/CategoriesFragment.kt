@@ -1,6 +1,7 @@
 package com.to.game.puzzle.kids.ui.fragment
 
 import android.os.Bundle
+import com.google.android.gms.ads.AdRequest
 import com.to.game.puzzle.kids.R
 import com.to.game.puzzle.kids.constants.AppConstants
 import com.to.game.puzzle.kids.constants.AppConstants.Companion.ANIMAL
@@ -36,6 +37,8 @@ class CategoriesFragment: BaseFragment() {
         arguments?.let {
             isColoring = it.getBoolean(KEY_SCREEN_TYPE, false)
         }
+        val adRequest = AdRequest.Builder().build()
+        adBanner.loadAd(adRequest)
 
         super.initView(savedInstanceState)
         animal.setOnClickListener { gotoItem(ANIMAL) }

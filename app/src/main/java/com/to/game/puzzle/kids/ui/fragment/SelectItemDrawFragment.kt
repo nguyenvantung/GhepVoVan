@@ -1,9 +1,9 @@
 package com.to.game.puzzle.kids.ui.fragment
 
 import android.content.Intent
-import android.graphics.Typeface
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.to.game.puzzle.kids.R
 import com.to.game.puzzle.kids.`interface`.OnClickItem
@@ -15,7 +15,6 @@ import com.to.game.puzzle.kids.util.UiUtil
 import com.to.game.puzzle.kids.view.ItemOffsetDecoration
 import kotlinx.android.synthetic.main.fragment_choise.*
 import kotlinx.android.synthetic.main.fragment_choise.imBackMenu
-import kotlinx.android.synthetic.main.fragment_select_item.*
 import java.io.IOException
 
 class SelectItemDrawFragment : BaseFragment(), OnClickItem{
@@ -39,6 +38,8 @@ class SelectItemDrawFragment : BaseFragment(), OnClickItem{
 
     override fun initView(savedInstanceState: Bundle?) {
         super.initView(savedInstanceState)
+        val adRequest = AdRequest.Builder().build()
+        adBanner.loadAd(adRequest)
         activity?.let {
             listItem.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
             val itemDecoration = ItemOffsetDecoration(it, R.dimen.size_5)
@@ -105,8 +106,8 @@ class SelectItemDrawFragment : BaseFragment(), OnClickItem{
 
 
     override fun onPause() {
-        if (bannerAds != null) {
-            bannerAds.pause()
+        if (adBanner != null) {
+            adBanner.pause()
         }
         super.onPause()
     }
@@ -124,8 +125,8 @@ class SelectItemDrawFragment : BaseFragment(), OnClickItem{
     }
 
     override fun onDestroy() {
-        if (bannerAds != null) {
-            bannerAds.destroy()
+        if (adBanner != null) {
+            adBanner.destroy()
         }
         super.onDestroy()
     }

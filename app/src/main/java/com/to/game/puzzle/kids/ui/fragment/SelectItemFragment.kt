@@ -4,16 +4,14 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import com.google.android.gms.ads.AdRequest
 import com.to.game.puzzle.kids.R
 import com.to.game.puzzle.kids.constants.AppConstants
 import com.to.game.puzzle.kids.ui.activity.BaseFragment
 import com.to.game.puzzle.kids.ui.activity.PuzzleActivity
 import com.to.game.puzzle.kids.ui.adapter.OnCLickItemInterface
 import com.to.game.puzzle.kids.ui.adapter.SelectImageAdapter
-import com.to.game.puzzle.kids.util.FragmentUtil
 import com.to.game.puzzle.kids.util.UiUtil
-import kotlinx.android.synthetic.main.fragment_menu_categories.*
 import kotlinx.android.synthetic.main.fragment_select_item.*
 import java.io.IOException
 
@@ -40,6 +38,8 @@ class SelectItemFragment: BaseFragment() {
     @SuppressLint("WrongConstant")
     override fun initView(savedInstanceState: Bundle?) {
         super.initView(savedInstanceState)
+        val adRequest = AdRequest.Builder().build()
+        adBanner.loadAd(adRequest)
         type = arguments!!.getInt(KEY_TYPE_CATEGORIES)
         listImage = getListImage(type)
         rclListItem.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)

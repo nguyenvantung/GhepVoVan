@@ -18,6 +18,7 @@ import java.io.InputStream
 import java.text.SimpleDateFormat
 import java.util.*
 
+@Suppress("DEPRECATION")
 class UiUtil {
     companion object{
         fun getDrawable(context: Context, path: String): Drawable?{
@@ -70,11 +71,7 @@ class UiUtil {
         }
 
         fun saveImage(finalBitmap: Bitmap): File? {
-            val myDir = File(
-                Environment.getExternalStoragePublicDirectory(
-                    Environment.DIRECTORY_PICTURES
-                ), "saved_images"
-            )
+            val myDir = File(Environment.getExternalStoragePublicDirectory( Environment.DIRECTORY_PICTURES), "saved_images")
             DebugLog.e("saveImage:" + myDir.mkdirs())
             val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
             val fName = "kid$timeStamp.jpg"

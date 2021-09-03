@@ -38,7 +38,7 @@
 
 
     <com.google.android.gms.ads.AdView
-        android:id="@+id/bannerAds"
+        android:id="@+id/adBanner"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_60sdp"
         android:layout_alignParentBottom="true"
