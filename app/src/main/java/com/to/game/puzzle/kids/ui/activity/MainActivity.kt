@@ -16,12 +16,13 @@ import com.to.game.puzzle.kids.constants.AppConstants
 import com.to.game.puzzle.kids.ui.fragment.HomeFragment
 import com.to.game.puzzle.kids.util.FragmentUtil
 import org.jsoup.Jsoup
+import org.jsoup.nodes.Document
 
 
 class MainActivity : BaseActivity() {
 
     var mediaPlayer: MediaPlayer? = null
-    private var currentVersion: String? = null
+    private var currentVersion: String = "1.0"
 
     override fun getResourceLayoutId(): Int {
         return R.layout.activity_main
@@ -66,15 +67,22 @@ class MainActivity : BaseActivity() {
 
             var newVersion: String? = null
             try {
-                newVersion =
-                    Jsoup.connect("https://play.google.com/store/apps/details?id=$packageName&hl=it")
-                        .timeout(30000)
-                        .userAgent("Mozilla/5.0 (Windows; U; WindowsNT 5.1; en-US; rv1.8.1.6) Gecko/20070725 Firefox/2.0.0.6")
-                        .referrer("http://www.google.com")
-                        .get()
-                        .select("div[itemprop=softwareVersion]")
-                        .first()
-                        .ownText()
+                val document = Jsoup.connect("https://play.google.com/store/apps/details?id=tet.to.kv.game.puzzle.kids&hl=en")
+                    .timeout(30000)
+                    .userAgent("Mozilla/5.0 (Windows; U; WindowsNT 5.1; en-US; rv1.8.1.6) Gecko/20070725 Firefox/2.0.0.6")
+                    .referrer("http://www.google.com")
+                    .get()
+                if (document != null) {
+                    val element = document.getElementsContainingOwnText("Current Version")
+                    for (ele in element) {
+                        if (ele.siblingElements() != null) {
+                            val sibElemets = ele.siblingElements()
+                            for (sibElemet in sibElemets) {
+                                newVersion = sibElemet.text()
+                            }
+                        }
+                    }
+                }
                 return newVersion
             } catch (e: Exception) {
                 return newVersion
@@ -85,7 +93,7 @@ class MainActivity : BaseActivity() {
         override fun onPostExecute(onlineVersion: String?) {
             super.onPostExecute(onlineVersion)
             if (onlineVersion != null && onlineVersion.isNotEmpty()) {
-                if (java.lang.Float.valueOf(currentVersion) < java.lang.Float.valueOf(onlineVersion)) {
+                if ((currentVersion.toDouble()) < (onlineVersion.toDouble())) {
                     handleShowUpdate()
                 }
             }
