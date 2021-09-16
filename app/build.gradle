@@ -10,8 +10,8 @@ android {
         applicationId "tet.to.kv.game.puzzle.kids"
         minSdkVersion 21
         targetSdkVersion 31
-        versionCode 3
-        versionName "1.1.1"
+        versionCode 4
+        versionName "1.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

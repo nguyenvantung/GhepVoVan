@@ -111,6 +111,6 @@
         android:layout_height="@dimen/margin_80"
         android:layout_alignParentBottom="true"
         ads:adSize="SMART_BANNER"
-        ads:adUnitId="@string/admob_banner_main" />
+        ads:adUnitId="@string/admob_banner_category" />
 
 </RelativeLayout>

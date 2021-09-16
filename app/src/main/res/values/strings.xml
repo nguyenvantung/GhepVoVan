@@ -3,9 +3,13 @@
     <string name="action_settings">Settings</string>
     <string name="pick_categories">Pick Categories</string>
 
-    <string name="admob_app_id">ca-app-pub-5997146054072325~9361750746</string>
-    <string name="admob_interstitial_id">ca-app-pub-5997146054072325/1316218696</string>
-    <string name="admob_banner_main">ca-app-pub-5997146054072325/7857097385</string>
+    <string name="admob_app_id">ca-app-pub-6644478715221164~5548348415</string>
+    <string name="admob_interstitial_id">ca-app-pub-6644478715221164/2502833939</string>
+    <string name="admob_interstitial_color">ca-app-pub-6644478715221164/3041889987</string>
+
+    <string name="admob_banner_main">ca-app-pub-6644478715221164/7946732307</string>
+    <string name="admob_banner_category">ca-app-pub-6644478715221164/6442078946</string>
+    <string name="admob_banner_item">ca-app-pub-6644478715221164/8182536026</string>
 
 
     <string name="save_image_back">Do you want save image!</string>

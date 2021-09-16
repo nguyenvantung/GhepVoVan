@@ -124,7 +124,7 @@
         android:layout_height="@dimen/margin_80"
         android:layout_marginTop="@dimen/margin_10"
         ads:adSize="SMART_BANNER"
-        ads:adUnitId="@string/admob_banner_main"
+        ads:adUnitId="@string/admob_banner_item"
         android:layout_alignParentBottom="true"/>
 
 

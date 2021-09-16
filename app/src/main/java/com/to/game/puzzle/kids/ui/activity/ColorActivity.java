@@ -758,7 +758,7 @@ public class ColorActivity extends FragmentActivity implements GestureDetector.O
 
         AdRequest adRequest = new AdRequest.Builder().build();
 
-        InterstitialAd.load(this, getString(R.string.admob_interstitial_id), adRequest,
+        InterstitialAd.load(this, getString(R.string.admob_interstitial_color), adRequest,
                 new InterstitialAdLoadCallback() {
                     @Override
                     public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
