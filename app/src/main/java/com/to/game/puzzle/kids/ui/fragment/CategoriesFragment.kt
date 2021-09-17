@@ -3,7 +3,6 @@ package com.to.game.puzzle.kids.ui.fragment
 import android.os.Bundle
 import com.google.android.gms.ads.AdRequest
 import com.to.game.puzzle.kids.R
-import com.to.game.puzzle.kids.constants.AppConstants
 import com.to.game.puzzle.kids.constants.AppConstants.Companion.ANIMAL
 import com.to.game.puzzle.kids.constants.AppConstants.Companion.CARS
 import com.to.game.puzzle.kids.constants.AppConstants.Companion.FISH

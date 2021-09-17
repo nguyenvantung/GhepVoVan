@@ -13,8 +13,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RelativeLayout
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.ads.AdError
@@ -70,7 +68,6 @@ class PuzzleActivity : FragmentActivity() {
             if (widthCheck) {
                 widthFinal = scrollView.measuredWidth
                 heightFinal = scrollView.measuredHeight
-                DebugLog.e("apppppp: $widthFinal :: $heightFinal")
                 puzzlePiecesList = puzzle.createPuzzlePieces(this, widthFinal, heightFinal, frameImage,
                     drawable!!,"/puzzles/",AppConstants.horizontalResolution, AppConstants.verticalResolution)
                 getAdapter()
@@ -92,7 +89,6 @@ class PuzzleActivity : FragmentActivity() {
             }
 
             override fun onAdLoaded(interstitialAd: InterstitialAd) {
-                DebugLog.e("Ad was loaded.")
                 mInterstitialAd = interstitialAd
                 loadAdsFull()
             }

@@ -67,7 +67,8 @@ class MainActivity : BaseActivity() {
 
             var newVersion: String? = null
             try {
-                val document = Jsoup.connect("https://play.google.com/store/apps/details?id=tet.to.kv.game.puzzle.kids&hl=en")
+                val document = Jsoup.connect(
+                    "https://play.google.com/store/apps/details?id=$packageName&hl=en")
                     .timeout(30000)
                     .userAgent("Mozilla/5.0 (Windows; U; WindowsNT 5.1; en-US; rv1.8.1.6) Gecko/20070725 Firefox/2.0.0.6")
                     .referrer("http://www.google.com")
@@ -97,7 +98,6 @@ class MainActivity : BaseActivity() {
                     handleShowUpdate()
                 }
             }
-            Log.d("update", "Current version " + currentVersion + "playstore version " + onlineVersion)
         }
 
     }
@@ -114,7 +114,7 @@ class MainActivity : BaseActivity() {
                         Uri.parse("market://details?id=$packageName")
                     )
                 )
-            } catch (anfe: android.content.ActivityNotFoundException) {
+            } catch (e: Exception) {
                 startActivity(
                     Intent(
                         Intent.ACTION_VIEW,
